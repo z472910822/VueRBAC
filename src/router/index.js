@@ -49,30 +49,42 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '主页',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '主页', icon: 'dashboard' }
     }]
   },
-
+  //新增路由-用户管理
+{
+  path:'/member',
+  component:Layout,
+  redirect:'/member/list',
+  children:[{
+    path:'list',
+    name:'list',
+    component:()=>import('@/views/member/index'),
+    meta:{title:'用户管理',icon:'user'},
+  }
+  ]
+},
   {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
     name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    meta: { title: '文章管理', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: '文章列表', icon: 'table' }
       },
       {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        meta: { title: '时间树', icon: 'tree' }
       }
     ]
   },
@@ -85,7 +97,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        meta: { title: '发布文章', icon: 'form' }
       }
     ]
   },
@@ -96,7 +108,7 @@ export const constantRoutes = [
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '嵌套列表',
       icon: 'nested'
     },
     children: [
@@ -150,12 +162,12 @@ export const constantRoutes = [
   },
 
   {
-    path: 'external-link',
+    path: 'MyGithubAddress',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'https://github.com/z472910822/VueRBAC',
+        meta: { title: '我的github地址', icon: 'link' }
       }
     ]
   },
